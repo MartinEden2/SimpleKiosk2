@@ -1,0 +1,47 @@
+{
+	"name": "SimpleKiosk",
+	"version": "0.2.0",
+	"description": "simplekiosk",
+	"options_page": "options.html",
+	"browser_action": {
+		"default_popup": "options.html"
+	},
+	"manifest_version": 2,
+	"minimum_chrome_version": "49",
+	"permissions": [
+        "webNavigation",
+		"storage",
+		"tabs",
+		"*://*/*",
+		"idle"
+	],
+	"icons": {
+		"128": "icon.png"
+	},
+	"background": {
+		"scripts": [
+			"js/background.js"
+		],
+		"persistent": true
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": [
+                "*://*/*"
+			],
+			"css": [
+				"css/navigator.css"
+			],
+			"js": [
+				"js/jquery.min.js",
+				"js/navigator.js"
+			]
+		}
+	],
+    "web_accessible_resources": [
+        "img/back.png",
+        "img/home.png",
+        "img/close.png"
+    ]
+}
